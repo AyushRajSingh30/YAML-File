@@ -1,0 +1,37 @@
+version: "3.9"  # Docker Compose file version
+
+services:
+  app:
+    container_name: node-app
+    build: .                # Build image from Dockerfile in current folder
+    ports:
+      - "3000:3000"        # Expose container port 3000 to host
+    volumes:
+      - .:/app              # Sync local folder to container for live changes
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://mongo:27017/mydb  # Connect to Mongo container
+      - REDIS_HOST=redis                       # Connect to Redis container
+      - REDIS_PORT=6379
+    depends_on:
+      - mongo               # Wait for Mongo container to start
+      - redis               # Wait for Redis container to start
+    command: npm start      # Command to run inside container
+
+  mongo:
+    image: mongo:6           # Prebuilt MongoDB image
+    container_name: mongo
+    ports:
+      - "27017:27017"        # Expose Mongo port to host
+    volumes:
+      - mongo-data:/data/db  # Persist Mongo data
+
+  redis:
+    image: redis:7           # Prebuilt Redis image
+    container_name: redis
+    ports:
+      - "6379:6379"          # Expose Redis port to host
+
+# Volumes to persist data
+volumes:
+  mongo-data:
