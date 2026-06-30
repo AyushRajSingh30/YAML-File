@@ -1,0 +1,108 @@
+# string
+name: Ayush
+last_Name: "Singh"
+address: "123 Main St"
+
+# multiline string
+# block style
+description: |
+  Line 1
+  Line 2
+  Line 3
+
+# folded style
+description2: >
+  Line 1
+  Line 2
+  Line 3
+
+# number
+age: 25
+height: 5.9
+
+# boolean
+isStudent: true
+isEmployed: false
+isBigStudent: yes
+isBigEmployee: no
+
+# null
+middleName: null
+surname: ~
+
+# list/array
+hobbies:
+  - Reading
+  - Coding
+  - Gaming
+
+steeping_times: [1, 2, 3, 4, 5]
+
+# Nested list
+# 1. List inside a list
+
+numbers:
+  - - 1
+    - 2
+  - - 3
+    - 4
+
+# 2. Object inside a list
+
+employees:
+  - name: John
+    skills:
+      - Python
+      - Docker
+      - Kubernetes
+
+  - name: Alice
+    skills:
+      - Java
+      - Azure
+
+# 3. Object -> List-> Object-> List
+
+departments:
+  - name: IT
+    employees:
+      - name: John
+        skills:
+          - Python
+          - Docker
+      - name: Alice
+        skills:
+          - Java
+          - Azure
+
+# map/object
+billing_address:
+  city: "New York"
+  state: "NY"
+  zip: "10001"
+
+# Default confuguration
+# We can use this default_confuguration in other places
+# by using *default_base
+default_confuguration: &default_base
+  server: prod
+  port: 8080
+  ram: "4GB"
+  gpu: ""
+
+# Different configurations using the default_base and overright and add more confuguration
+dev_conf:
+  <<: *default_base
+  server: dev
+
+prod_conf:
+  <<: *default_base
+  server: prod
+
+# These are example of type striction
+my_int: !!int 1
+my_float: !!float 1.0
+my_str: !!str "1"
+my_bool: !!bool true
+
+# set
