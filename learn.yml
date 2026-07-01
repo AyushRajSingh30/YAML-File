@@ -61,6 +61,27 @@ employees:
       - Java
       - Azure
 
+# Example: JSON
+{
+  "employees": [
+    {
+      "name": "John",
+      "skills": [
+        "Python",
+        "Docker",
+        "Kubernetes"
+      ]
+    },
+    {
+      "name": "Alice",
+      "skills": [
+        "Java",
+        "Azure"
+      ]
+    }
+  ]
+}
+
 # 3. Object -> List-> Object-> List
 
 departments:
@@ -75,11 +96,45 @@ departments:
           - Java
           - Azure
 
+# Example: JSON
+{
+  "departments": [
+    {
+      "name": "IT",
+      "employees": [
+        {
+          "name": "John",
+          "skills": [
+            "Python",
+            "Docker"
+          ]
+        },
+        {
+          "name": "Alice",
+          "skills": [
+            "Java",
+            "Azure"
+          ]
+        }
+      ]
+    }
+  ]
+}
+
 # map/object
 billing_address:
   city: "New York"
   state: "NY"
   zip: "10001"
+
+# Example: JSON
+{
+  "billing_address": {
+    "city": "New York",
+    "state": "NY",
+    "zip": "10001"
+  }
+}
 
 # Default confuguration
 # We can use this default_confuguration in other places
